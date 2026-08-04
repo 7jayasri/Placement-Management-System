@@ -77,5 +77,41 @@ public with sharing class ApplicationService {
 
         return 'Application Status Updated Successfully';
     }
+//updated 
+ public static void validateApplications(List<Application__c> applications){
+
+    for(Application__c app : applications){
+
+        if(app.Student__c == null){
+            app.addError('Student is required.');
+        }
+
+        if(app.Job__c == null){
+            app.addError('Job is required.');
+        }
+    }
+}
+public static void handleStatusUpdate(
+    List<Application__c> newList,
+    Map<Id, Application__c> oldMap){
+
+    List<Application__c> selectedApplications = new List<Application__c>();
+
+    for(Application__c app : newList){
+
+        if(app.Status__c == 'Selected'
+            && oldMap.get(app.Id).Status__c != 'Selected'){
+
+            selectedApplications.add(app);
+        }
+    }
+
+    if(!selectedApplications.isEmpty()){
+        StatisticsService.updateStatistics(selectedApplications);
+        NotificationService.sendNotification(selectedApplications);
+    }
+}
+
+}
 
 }
