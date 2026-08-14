@@ -1,0 +1,57 @@
+<template>
+
+    <lightning-card
+        title="Eligible Jobs"
+        icon-name="standard:job_position">
+
+        <div class="slds-p-around_medium">
+
+            <template if:true={error}>
+
+                <div class="slds-text-color_error slds-p-around_medium">
+                    We couldn't load your eligible jobs.
+                    Please try again later.
+                </div>
+
+            </template>
+
+            <template if:false={error}>
+
+                <template if:true={jobs.length}>
+
+                    <template for:each={jobs} for:item="job">
+
+                        <c-job-card
+                            key={job.Id}
+                            job={job}
+                            onviewdetails={handleViewDetails}
+                            onapply={handleApply}>
+                        </c-job-card>
+
+                    </template>
+
+                </template>
+
+                <template if:false={jobs.length}>
+
+                    <div class="slds-align_absolute-center slds-p-around_large">
+                        No eligible jobs are currently available.
+                    </div>
+
+                </template>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+    <template if:true={showDetails}>
+
+    <c-job-details
+        job={selectedJob}
+        onclose={handleCloseDetails}>
+    </c-job-details>
+
+</template>
+
+</template>

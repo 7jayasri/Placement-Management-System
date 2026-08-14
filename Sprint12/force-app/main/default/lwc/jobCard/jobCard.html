@@ -1,0 +1,60 @@
+<template>
+
+    <div class="job-card slds-box slds-m-bottom_medium">
+
+        <h2 class="slds-text-heading_medium">
+            {job.Name}
+        </h2>
+
+        <p>
+            <strong>Company:</strong>
+            {job.Company__c}
+        </p>
+
+        <p>
+            <strong>Package:</strong>
+            {job.Package__c} LPA
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            {job.Location__c}
+        </p>
+
+        <p>
+            <strong>Closing Date:</strong>
+            {job.Closing_Date__c}
+        </p>
+
+        <p>
+            <strong>Eligible Branch:</strong>
+            {job.Eligible_Branch__c}
+        </p>
+
+        <p>
+            <strong>Minimum CGPA:</strong>
+            {job.Minimum_CGPA__c}
+        </p>
+
+        <div class="slds-m-top_medium">
+
+            <lightning-button
+                label="View Details"
+                variant="neutral"
+                data-id={job.Id}
+                onclick={handleViewDetails}>
+            </lightning-button>
+
+            <lightning-button
+                label="Apply"
+                variant="brand"
+                class="slds-m-left_small"
+                data-id={job.Id}
+                onclick={handleApply}>
+            </lightning-button>
+
+        </div>
+
+    </div>
+
+</template>

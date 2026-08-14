@@ -1,0 +1,61 @@
+<template>
+
+    <lightning-card
+        title="Student Summary"
+        icon-name="standard:contact">
+
+        <div class="slds-p-around_medium">
+
+            <template if:true={error}>
+
+                <div class="slds-text-color_error">
+                    Unable to load student information.
+                </div>
+
+            </template>
+
+            <template if:true={student}>
+
+                <div class="slds-box">
+
+                    <p class="slds-m-bottom_small">
+                        <strong>Name:</strong>
+                        {student.Name}
+                    </p>
+
+                    <p class="slds-m-bottom_small">
+                        <strong>Branch:</strong>
+                        {student.Branch__c}
+                    </p>
+
+                    <p class="slds-m-bottom_small">
+                        <strong>CGPA:</strong>
+                        {student.CGPA__c}
+                    </p>
+
+                    <p class="slds-m-bottom_small">
+                        <strong>Graduation Year:</strong>
+                        {student.Graduation_Year__c}
+                    </p>
+
+                </div>
+
+            </template>
+
+            <template if:false={student}>
+
+                <template if:false={error}>
+
+                    <div class="slds-p-around_medium">
+                        Student information is not available.
+                    </div>
+
+                </template>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>
