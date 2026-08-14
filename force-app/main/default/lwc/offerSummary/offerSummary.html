@@ -1,0 +1,76 @@
+<template>
+
+    <lightning-card
+        title="Offer Summary"
+        icon-name="standard:reward">
+
+        <div class="slds-p-around_medium">
+
+            <template if:true={error}>
+
+                <div class="slds-text-color_error slds-p-around_medium">
+                    Unable to load your offers.
+                </div>
+
+            </template>
+
+            <template if:false={error}>
+
+                <template if:true={offers.length}>
+
+                    <template for:each={offers} for:item="offer">
+
+                        <div
+                            key={offer.Id}
+                            class="slds-box slds-m-bottom_medium">
+
+                            <h2 class="slds-text-heading_medium">
+                                {offer.Job__r.Name}
+                            </h2>
+
+                            <p>
+                                <strong>Company:</strong>
+                                {offer.Job__r.Company__c}
+                            </p>
+
+                            <p>
+                                <strong>Package:</strong>
+                                {offer.Job__r.Package__c} LPA
+                            </p>
+
+                            <p>
+                                <strong>Location:</strong>
+                                {offer.Job__r.Location__c}
+                            </p>
+
+                            <p>
+                                <strong>Status:</strong>
+                                {offer.Status__c}
+                            </p>
+
+                            <p>
+                                <strong>Application Date:</strong>
+                                {offer.Application_Date__c}
+                            </p>
+
+                        </div>
+
+                    </template>
+
+                </template>
+
+                <template if:false={offers.length}>
+
+                    <div class="slds-align_absolute-center slds-p-around_large">
+                        No offers available.
+                    </div>
+
+                </template>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>

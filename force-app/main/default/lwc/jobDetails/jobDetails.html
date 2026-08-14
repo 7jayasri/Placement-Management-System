@@ -1,0 +1,79 @@
+<template>
+
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-modal="true"
+        class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <!-- Header -->
+            <header class="slds-modal__header">
+
+                <lightning-button-icon
+                    icon-name="utility:close"
+                    alternative-text="Close"
+                    title="Close"
+                    class="slds-modal__close"
+                    onclick={handleClose}>
+                </lightning-button-icon>
+
+                <h2 class="slds-text-heading_medium">
+                    {job.Name}
+                </h2>
+
+            </header>
+
+            <!-- Body -->
+            <div class="slds-modal__content slds-p-around_medium">
+
+                <div class="slds-m-bottom_medium">
+                    <strong>Company</strong>
+                    <p>{job.Company__c}</p>
+                </div>
+
+                <div class="slds-m-bottom_medium">
+                    <strong>Package</strong>
+                    <p>{job.Package__c} LPA</p>
+                </div>
+
+                <div class="slds-m-bottom_medium">
+                    <strong>Location</strong>
+                    <p>{job.Location__c}</p>
+                </div>
+
+                <div class="slds-m-bottom_medium">
+                    <strong>Closing Date</strong>
+                    <p>{job.Closing_Date__c}</p>
+                </div>
+
+                <div class="slds-m-bottom_medium">
+                    <strong>Eligible Branch</strong>
+                    <p>{job.Eligible_Branch__c}</p>
+                </div>
+
+                <div class="slds-m-bottom_medium">
+                    <strong>Minimum CGPA</strong>
+                    <p>{job.Minimum_CGPA__c}</p>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="slds-modal__footer">
+
+                <lightning-button
+                    label="Close"
+                    onclick={handleClose}>
+                </lightning-button>
+
+            </footer>
+
+        </div>
+
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
